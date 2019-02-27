@@ -17,5 +17,9 @@ block content
         each schedule in schedules
           tr
             td
-              a(href=`/schedules/${schedule.scheduleId}`) #{schedule.scheduleName}
+              - var name = schedule.scheduleName
+              if name.length >= 1
+                a(href=`/schedules/${schedule.scheduleId}`) #{name}
+              else
+                a(href=`/schedules/${schedule.scheduleId}`) !!!NOTITLE!!!
             td #{schedule.formattedUpdatedAt}
